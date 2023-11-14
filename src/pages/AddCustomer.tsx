@@ -1,13 +1,14 @@
 // src/components/AddCustomer.tsx
 import React, { useState } from "react";
 import { axiosPrivateCustomer } from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 const AddCustomer: React.FC = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -23,6 +24,7 @@ const AddCustomer: React.FC = () => {
       const response = await axiosPrivateCustomer.post("/Customers", data);
 
       console.log("Customer added successfully:", response.data);
+      navigate("/login");
     } catch (error) {
       console.error("Error adding customer:", error);
     }
@@ -70,6 +72,9 @@ const AddCustomer: React.FC = () => {
         </div>
         <button type="submit">Add Customer</button>
       </form>
+      <button style={{ color: "Red" }} onClick={() => navigate("/login")}>
+        GO TO REGISTER
+      </button>
     </div>
   );
 };
