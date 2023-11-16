@@ -1,9 +1,8 @@
 // src/Login.tsx
 import React, { useState } from "react";
-// // import axiosPrivateCustomer from "../services/api";
-// import { axiosPrivateCustomer } from "../services/api";
 import { axiosPrivateCustomer } from "../services/api";
 import { useNavigate } from "react-router-dom";
+// import { GoogleLogin } from "@react-oauth/google";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -13,7 +12,6 @@ const LoginPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
     const data = {
       username: username,
       password: password,
@@ -22,12 +20,16 @@ const LoginPage: React.FC = () => {
       const response = await axiosPrivateCustomer.post("/login", data);
 
       console.log("Login successful");
+      e.preventDefault();
       console.log("User:", response.data.user);
       navigate("/main");
     } catch (error) {
       // console.error("Error during login:", error);
       setMessage(error.response?.data?.message);
     }
+  };
+  const handleLogin = () => {
+    window.open("http://localhost:3125/customers/auth", "_self");
   };
 
   return (
@@ -55,6 +57,8 @@ const LoginPage: React.FC = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      <button onClick={handleLogin}>LOGIN WitH GOOGLE </button>
+
       <button style={{ color: "Red" }} onClick={() => navigate("/register")}>
         GO TO REGISTER
       </button>

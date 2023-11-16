@@ -73,7 +73,7 @@ const AddCustomer: React.FC = () => {
         <button type="submit">Add Customer</button>
       </form>
       <button style={{ color: "Red" }} onClick={() => navigate("/login")}>
-        GO TO REGISTER
+        GO TO LOGIN
       </button>
     </div>
   );
