@@ -31,7 +31,7 @@ const AddCustomer: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="body-container">
       <h2>Add Customer</h2>
       <form onSubmit={handleSubmit}>
         <div>

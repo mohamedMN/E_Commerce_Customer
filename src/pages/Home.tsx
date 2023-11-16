@@ -5,7 +5,7 @@ import HeroSectionContainer from "../components/HeroSection"; // Import your Her
 import Footer from "../components/Footer"; // Import your Footer component
 
 // Main component
-const Main: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div>
       {/* Navbar */}
@@ -23,4 +23,4 @@ const Main: React.FC = () => {
   );
 };
 
-export default Main;
+export default Home;
