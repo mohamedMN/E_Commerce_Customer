@@ -1,8 +1,9 @@
-// src/Login.tsx
 import React, { useState } from "react";
 import { axiosPrivateCustomer } from "../services/api";
 import { useNavigate } from "react-router-dom";
-// import { GoogleLogin } from "@react-oauth/google";
+import logo from "../Assets/GoodiesLogo.svg";
+import Lottie from "lottie-react";
+import Animation from "../Assets/Animation - 1700168282784.json";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -24,7 +25,6 @@ const LoginPage: React.FC = () => {
       console.log("User:", response.data.user);
       navigate("/main");
     } catch (error) {
-      // console.error("Error during login:", error);
       setMessage(error.response?.data?.message);
     }
   };
@@ -33,35 +33,86 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      {message && <p style={{ color: "red" }}>{message}</p>}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <div style={{ width: "50%" }}>
+        <Lottie animationData={Animation} />
+      </div>
+      <div style={{ width: "50%" }}>
+        <h1>Log in</h1>
+        <h4>Enter your details below</h4>
 
-      <form method="post" onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="email"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      <button onClick={handleLogin}>LOGIN WitH GOOGLE </button>
-
-      <button style={{ color: "Red" }} onClick={() => navigate("/register")}>
-        GO TO REGISTER
-      </button>
+        <form method="post" onSubmit={handleSubmit}>
+          
+         
+          <div style={{ marginBottom: "10px" }}>
+            <input
+              type="email"
+              placeholder="Email or Phone Number"
+              style={{
+                width: "40%",
+                padding: "8px",
+                border: "none",
+                borderBottom: "1px solid grey",
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: "10px" }}>
+            <input
+              type="password"
+              placeholder="Password"
+              style={{
+                width: "40%",
+                padding: "8px",
+                border: "none",
+                borderBottom: "1px solid grey",
+              }}
+            />
+          </div>
+        
+          <button
+            type="submit"
+            style={{
+              width: "44%",
+              backgroundColor: "orange",
+              color: "#ffffff",
+              padding: "10px 15px",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Log in
+          </button>
+          <br />
+          <br />
+          <button
+            type="submit"
+            style={{
+              width: "44%",
+              backgroundColor: "red",
+              color: "#ffffff",
+              padding: "10px 15px",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Sign up with Google
+          </button>
+          <h4 style={{ color: "grey" }}>
+            Don't have an account?
+            <span>
+              <a href="">Sign up</a>
+            </span>
+          </h4>
+        </form>
+        <p>{message}</p>
+      </div>
     </div>
   );
 };
