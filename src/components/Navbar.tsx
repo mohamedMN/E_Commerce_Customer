@@ -1,18 +1,20 @@
 // Navbar.tsx
 import React from "react";
 import { Link } from "react-router-dom"; // Assuming you're using React Router
+import "../styles/navbar.css";
+import logo from "../assets/GoodiesLogo.svg";
+import { FaSearch, FaShoppingBag } from "react-icons/fa";
+import { useState } from "react";
 
 const Navbar: React.FC = () => {
+  const [showSearchInput, setShowSearchInput] = useState(false);
+
+  const toggleSearchInput = () => {
+    setShowSearchInput(!showSearchInput);
+  };
   return (
-    <nav style={{ backgroundColor: "black", padding: "10px 0" }}>
-      <div
-        className="navbar-container"
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          color: "white",
-        }}
-      >
+    <nav>
+      <div className="navbar-container">
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
@@ -22,6 +24,32 @@ const Navbar: React.FC = () => {
         {/* For example, display "Login" if the user is not logged in, and "Logout" if they are */}
         <Link to="/login">Login</Link>
       </div>
+      <ul className="nav-links">
+        <li>
+          <Link to="/main">Main</Link>
+        </li>
+        <li>
+          <Link to="/">About</Link>
+        </li>
+        <li>
+          <Link to="/">Services</Link>
+        </li>
+        <li>
+          <Link to="/">Contact</Link>
+        </li>
+      </ul>
+      <form className="search-form">
+        <div className="search-icons">
+          <FaSearch onClick={toggleSearchInput} />
+          <FaShoppingBag />
+        </div>
+        <input
+          type="text"
+          placeholder="Search..."
+          className={showSearchInput ? "active" : ""}
+        />
+        
+      </form>
     </nav>
   );
 };

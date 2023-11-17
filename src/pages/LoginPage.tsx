@@ -1,10 +1,9 @@
-// src/Login.tsx
 import React, { useState } from "react";
 import { axiosPrivateCustomer } from "../services/api";
 import { useNavigate } from "react-router-dom";
-import logo from "../Assets/GoodiesLogo.svg";
 import Lottie from "lottie-react";
 import Animation from "../Assets/Animation - 1700168282784.json";
+import { Link } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -14,7 +13,6 @@ const LoginPage: React.FC = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
     const data = {
       username: username,
       password: password,
@@ -23,11 +21,15 @@ const LoginPage: React.FC = () => {
       const response = await axiosPrivateCustomer.post("/login", data);
 
       console.log("Login successful");
+      e.preventDefault();
       console.log("User:", response.data.user);
       navigate("/main");
     } catch (error) {
       setMessage(error.response?.data?.message);
     }
+  };
+  const handleLogin = () => {
+    window.open("http://localhost:3125/customers/auth", "_self");
   };
 
   return (
@@ -47,11 +49,12 @@ const LoginPage: React.FC = () => {
         <h4>Enter your details below</h4>
 
         <form method="post" onSubmit={handleSubmit}>
-          
-         
           <div style={{ marginBottom: "10px" }}>
             <input
               type="email"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
               placeholder="Email or Phone Number"
               style={{
                 width: "40%",
@@ -64,6 +67,8 @@ const LoginPage: React.FC = () => {
           <div style={{ marginBottom: "10px" }}>
             <input
               type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
               placeholder="Password"
               style={{
                 width: "40%",
@@ -73,7 +78,7 @@ const LoginPage: React.FC = () => {
               }}
             />
           </div>
-        
+
           <button
             type="submit"
             style={{
@@ -91,6 +96,7 @@ const LoginPage: React.FC = () => {
           <br />
           <button
             type="submit"
+            onClick={handleLogin}
             style={{
               width: "44%",
               backgroundColor: "red",
@@ -105,7 +111,7 @@ const LoginPage: React.FC = () => {
           <h4 style={{ color: "grey" }}>
             Don't have an account?
             <span>
-              <a href="">Sign up</a>
+              <Link to={"/register"}>Sign up</Link>
             </span>
           </h4>
         </form>
