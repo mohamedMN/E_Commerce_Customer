@@ -43,24 +43,12 @@ const LoginPage: React.FC = () => {
         <Lottie animationData={Animation} />
       </div>
       <div style={{ width: "50%" }}>
-        <h1>Create an account</h1>
+        <h1>Log in</h1>
         <h4>Enter your details below</h4>
 
         <form method="post" onSubmit={handleSubmit}>
-          <div style={{ marginBottom: "10px" }}>
-            <input
-              type="text"
-              placeholder="Name"
-              style={{
-                width: "40%",
-                padding: "8px",
-                border: "none",
-                borderBottom: "1px solid grey", // Grey line under the input
-              }}
-            />
-          </div>
-          {/* Add other input fields as needed */}
-          {/* For example, email and password fields */}
+          
+         
           <div style={{ marginBottom: "10px" }}>
             <input
               type="email"
@@ -85,9 +73,7 @@ const LoginPage: React.FC = () => {
               }}
             />
           </div>
-          {/* Add other input fields as needed */}
-          {/* Remember to update the state and data object accordingly */}
-
+        
           <button
             type="submit"
             style={{
@@ -99,7 +85,7 @@ const LoginPage: React.FC = () => {
               cursor: "pointer",
             }}
           >
-            Create Account
+            Log in
           </button>
           <br />
           <br />
@@ -117,9 +103,9 @@ const LoginPage: React.FC = () => {
             Sign up with Google
           </button>
           <h4 style={{ color: "grey" }}>
-            Already have an account?
+            Don't have an account?
             <span>
-              <a href="">Log in </a>
+              <a href="">Sign up</a>
             </span>
           </h4>
         </form>
