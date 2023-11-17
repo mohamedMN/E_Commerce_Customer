@@ -4,8 +4,15 @@ import { Link } from "react-router-dom"; // Assuming you're using React Router
 
 const Navbar: React.FC = () => {
   return (
-    <nav>
-      <div className="navbar-container">
+    <nav style={{ backgroundColor: "black", padding: "10px 0" }}>
+      <div
+        className="navbar-container"
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          color: "white",
+        }}
+      >
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>

@@ -55,7 +55,19 @@ const AddCustomer: React.FC = () => {
           <div style={{ marginBottom: "10px" }}>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="First Name"
+              style={{
+                width: "40%",
+                padding: "8px",
+                border: "none",
+                borderBottom: "1px solid grey", // Grey line under the input
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: "10px" }}>
+            <input
+              type="text"
+              placeholder="Last Name"
               style={{
                 width: "40%",
                 padding: "8px",
