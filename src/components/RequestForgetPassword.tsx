@@ -18,14 +18,12 @@ const RequestForgetPassword: React.FC = () => {
       await axiosPrivateCustomer
         .post("/PasswordRequest", data)
         .then((e) => {
-          console.log("succes  " + e);
+          console.log("success  " + e);
           setMessage("Password reset link sent to your email.");
         })
         .catch(() => {
           setMessage("Password reset request failed. Please try again.");
-          setTimeout(() => {
-            setMessage(false);
-          }, 2000);
+          setTimeout(() => {}, 2000);
         });
     } catch (error) {
       setMessage("An error occurred. Please try again.");
