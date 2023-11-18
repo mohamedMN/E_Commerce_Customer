@@ -38,28 +38,8 @@ const AddCustomer: React.FC = () => {
   };
 
   return (
-    <div className="body-container">
-      <h2>Add Customer</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>First Name:</label>
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-          />
     <>
-      <div>
-        <label>Last Name:</label>
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required
-        />
-      </div>
-
+   
       <div
         style={{
           display: "flex",
@@ -87,12 +67,10 @@ const AddCustomer: React.FC = () => {
                   width: "40%",
                   padding: "8px",
                   border: "none",
-                  borderBottom: "1px solid grey", // Grey line under the input
+                  borderBottom: "1px solid grey",
                 }}
               />
             </div>
-            {/* Add other input fields as needed */}
-            {/* For example, email and password fields */}
             <div style={{ marginBottom: "10px" }}>
               <input
                 type="email"
@@ -123,9 +101,6 @@ const AddCustomer: React.FC = () => {
                 }}
               />
             </div>
-            {/* Add other input fields as needed */}
-            {/* Remember to update the state and data object accordingly */}
-
             <button
               type="submit"
               style={{
@@ -158,7 +133,7 @@ const AddCustomer: React.FC = () => {
             <h4 style={{ color: "grey" }}>
               Already have an account?
               <span>
-                <Link to={"/register"}>Log in</Link>
+                <Link to={"/login"}>Log in</Link>
               </span>
             </h4>
           </form>

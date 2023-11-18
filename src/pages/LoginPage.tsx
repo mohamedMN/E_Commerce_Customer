@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { axiosPrivateCustomer } from "../services/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import Animation from "../Assets/Animation - 1700168282784.json";
-import { Link } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -26,7 +25,7 @@ const LoginPage: React.FC = () => {
       e.preventDefault();
       console.log("User:", response.data.user);
       navigate("/home");
-    } catch (error) {
+    } catch (error: any) {
       setMessage(error.response?.data?.message);
     }
   };
@@ -51,7 +50,7 @@ const LoginPage: React.FC = () => {
         <h1>Log in</h1>
         <h4>Enter your details below</h4>
 
-        <form method="post" onSubmit={handleSubmit}>
+        <form method="POST" onSubmit={handleSubmit} autoComplete="on">
           <div style={{ marginBottom: "10px" }}>
             <input
               type="email"
@@ -81,6 +80,7 @@ const LoginPage: React.FC = () => {
               }}
             />
           </div>
+          <p style={{ color: "Red" }}>{message}</p>
 
           <button
             type="submit"
@@ -117,8 +117,15 @@ const LoginPage: React.FC = () => {
               <Link to={"/register"}>Sign up</Link>
             </span>
           </h4>
+          <h4 style={{ color: "grey" }}>
+            <span>
+              <Link to={"/RequestForgetPassword"}>
+                {" "}
+                you forget your password ?
+              </Link>
+            </span>
+          </h4>
         </form>
-        <p>{message}</p>
       </div>
     </div>
   );

@@ -5,7 +5,7 @@
   text-decoration: none;
 }
 
-body {
+.body {
   font-family: Arial, sans-serif; /* Choose a web-safe font stack or consider using a custom font */
   background-color: #f4f4f4;
 }
