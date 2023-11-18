@@ -1,9 +1,9 @@
-// src/Login.tsx
 import React, { useState } from "react";
 import { axiosPrivateCustomer } from "../services/api";
-import { Link, useNavigate } from "react-router-dom";
-import "../styles/login.css";
-// import { GoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
+import Lottie from "lottie-react";
+import Animation from "../Assets/Animation - 1700168282784.json";
+import { Link } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -27,7 +27,6 @@ const LoginPage: React.FC = () => {
       console.log("User:", response.data.user);
       navigate("/home");
     } catch (error) {
-      // console.error("Error during login:", error);
       setMessage(error.response?.data?.message);
     }
   };
@@ -37,38 +36,90 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="body-container">
-      <h1>Login Page</h1>
-      {message && <p style={{ color: "red" }}>{message}</p>}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <div style={{ width: "50%" }}>
+        <Lottie animationData={Animation} />
+      </div>
+      <div style={{ width: "50%" }}>
+        <h1>Log in</h1>
+        <h4>Enter your details below</h4>
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      <button onClick={handleLogin}>LOGIN WitH GOOGLE </button>
+        <form method="post" onSubmit={handleSubmit}>
+          <div style={{ marginBottom: "10px" }}>
+            <input
+              type="email"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              placeholder="Email or Phone Number"
+              style={{
+                width: "40%",
+                padding: "8px",
+                border: "none",
+                borderBottom: "1px solid grey",
+              }}
+            />
+          </div>
+          <div style={{ marginBottom: "10px" }}>
+            <input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              placeholder="Password"
+              style={{
+                width: "40%",
+                padding: "8px",
+                border: "none",
+                borderBottom: "1px solid grey",
+              }}
+            />
+          </div>
 
-      <button style={{ color: "Red" }} onClick={() => navigate("/register")}>
-        GO TO REGISTER
-      </button>
-      <Link to={"/RequestForgetPassword"} className="forgot-password-button">
-        FORGOT PASSWORD ?
-      </Link>
+          <button
+            type="submit"
+            style={{
+              width: "44%",
+              backgroundColor: "orange",
+              color: "#ffffff",
+              padding: "10px 15px",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Log in
+          </button>
+          <br />
+          <br />
+          <button
+            type="submit"
+            onClick={handleLogin}
+            style={{
+              width: "44%",
+              backgroundColor: "red",
+              color: "#ffffff",
+              padding: "10px 15px",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Sign up with Google
+          </button>
+          <h4 style={{ color: "grey" }}>
+            Don't have an account?
+            <span>
+              <Link to={"/register"}>Sign up</Link>
+            </span>
+          </h4>
+        </form>
+        <p>{message}</p>
+      </div>
     </div>
   );
 };
