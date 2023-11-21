@@ -9,13 +9,14 @@ body {
   font-family: Arial, sans-serif; /* Choose a web-safe font stack or consider using a custom font */
   background-color: #f4f4f4;
 }
+
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: #e8c8c8;
-  color: #fff;
+  padding: 1rem 0rem;
+  background-color: black;
+  color: white;
 }
 
 .logo {
@@ -23,6 +24,7 @@ nav {
   display: flex;
   align-items: center;
 }
+
 .logo img {
   width: 40px;
   height: auto;
@@ -115,3 +117,4 @@ nav {
 .search-form input.active {
   display: block;
 }
+

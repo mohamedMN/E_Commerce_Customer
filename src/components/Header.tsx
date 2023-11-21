@@ -1,19 +1,53 @@
 // Header.tsx
 import React from "react";
-import Navbar from "./Navbar"; // Assuming you have a Navbar component
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import "../styles/header.css";
 
 const Header: React.FC = () => {
   return (
     <header>
-      <div className="header-container">
-        {/* You can customize the logo or app name */}
-        <div className="logo">Your Logo</div>
-
-        {/* Include your Navbar component */}
-        <Navbar />
-
-        {/* You can add additional elements to the header */}
-        {/* For example, user profile, search bar, etc. */}
+      <div
+        style={{
+          backgroundColor: "black",
+          textAlign: "center",
+          color: "white",
+          padding: "10px",
+          display: "flex",
+          justifyContent: "space-between",
+        }}
+      >
+        <div
+          style={{
+            width: "5%",
+          }}
+        ></div>
+        <p>
+          Black Friday Sale For All Products And Free Express Delivery - 50%
+          OFF!
+          <span>
+            <a href="">ShopNow</a>
+          </span>
+        </p>
+        <Select>
+          <SelectTrigger>
+            <SelectValue placeholder="ENGLISH" />
+          </SelectTrigger>
+          <SelectContent className="text-black dark:text-white">
+            <SelectItem value="french">FR</SelectItem>
+            <SelectItem value="english" className="">
+              ENG
+            </SelectItem>
+            <SelectItem value="arabic" className="">
+              AR
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </div>
     </header>
   );
