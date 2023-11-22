@@ -39,12 +39,12 @@ const Header: React.FC = () => {
             <SelectValue placeholder="ENGLISH" />
           </SelectTrigger>
           <SelectContent className="text-black dark:text-white">
-            <SelectItem value="french">FR</SelectItem>
+            <SelectItem value="french">FRENCH</SelectItem>
             <SelectItem value="english" className="">
-              ENG
+              ENGLISH
             </SelectItem>
             <SelectItem value="arabic" className="">
-              AR
+              ARABIC
             </SelectItem>
           </SelectContent>
         </Select>
